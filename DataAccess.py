@@ -15,10 +15,14 @@ class dbConnect:
         return self.cursor.fetchall()
 
 
+    def commit(self):
+        self.connection.commit()
 
     def close(self):
         self.cursor.close()
         self.connection.close()
+
+
 
 def main():
     db = dbConnect()

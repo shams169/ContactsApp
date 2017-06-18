@@ -42,11 +42,13 @@ def create():
         userid   = 1
 
         #INSERT into the database
-        ins_into_users = """INSERT INTO USERS VALUES('%s', '%s', '%s', '%s', '%s') """ \
-                         % ( fname, lname, uname, passwd, email)
+        ins_into_users = """INSERT INTO USERS (FirstName, LastName, UserName, PassWord, Email) \
+                            VALUES('%s', '%s', '%s', '%s', '%s') """ \
+                            % ( fname, lname, uname, passwd, email)
         try:
             db = dbConnect()
             db.cursor.execute(ins_into_users)
+            db.commit()
             db.close()
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
