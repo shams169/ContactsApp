@@ -1,9 +1,10 @@
-from app import app
-from flask import render_template
-from flask import url_for
-from flask import request
+from app            import app
+from flask          import render_template
+from flask          import url_for
+from flask          import request
+from DataAccess     import dbConnect
+import mysql.connector
 
-from DataAccess import dbConnect
 
 #from tkinter import messagebox
 
@@ -40,11 +41,14 @@ def create():
         email    = request.form['email']
         userid   = 1
 
-        cnx    = dbConnect()
-
-        ins_into_users =   "INSERT INTO USERS VALUES("+3+","+fname+","+lname+","+uname+","+passwd+","+email+")"
-
-        cnx.cursor.execute('SELECT * FROM USERS')
-        print(cnx.cursor.fetchall())
+        #INSERT into the database
+        ins_into_users = """INSERT INTO USERS VALUES('%s', '%s', '%s', '%s', '%s') """ \
+                         % ( fname, lname, uname, passwd, email)
+        try:
+            db = dbConnect()
+            db.cursor.execute(ins_into_users)
+            db.close()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
 
         return render_template("accountCreated.html")

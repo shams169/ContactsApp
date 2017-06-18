@@ -27,10 +27,14 @@ def main():
     uname   = "jwick"
     passwd   = "1234"
     email    = "j@yahoo.com"
-    userid   = 1
+    userid   = 4
 
-    ins_into_users =   "INSERT INTO USERS VALUES("+3+","+fname+","+lname+","+uname+","+passwd+","+email+")"
-    db.cursor.execute(ins_into_users)
+
+
+    ins_query = """INSERT INTO USERS (FirstName, LastName, UserName, PassWord,Email)VALUES('%s', '%s', '%s', '%s', '%s') """ %(fname, lname, uname, passwd, email)
+
+    db.cursor.execute(ins_query)
+    db.connection.commit()
 
 
 
