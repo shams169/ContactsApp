@@ -13,9 +13,10 @@ import mysql.connector
 def welcome():
     #url = "<a href='"+url_for('create')+"'> Create a Link</a>"
     url = url_for('create')
+    url_login = url_for('login')
     #messagebox.showinfo('url')
     print(url)
-    return render_template('welcome.html', create=url)
+    return render_template('welcome.html', create=url, login=url_login)
     # return """
     # <html><body>
     #  """ +url+"""
@@ -26,6 +27,16 @@ def welcome():
 @app.route('/home')
 def home():
     return "Home"
+
+@app.route('/login',methods=['GET','POST'])
+def login():
+    return render_template('Login.html')
+
+@app.route('/success',methods=['GET','POST'])
+def success():
+    return "<h3> Landing Page </h3>"
+
+
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():

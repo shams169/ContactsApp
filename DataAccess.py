@@ -25,14 +25,13 @@ class dbConnect:
 
 
 def main():
-    db = dbConnect()
+    db       = dbConnect()
     fname    = "John"
     lname    = "Wick"
-    uname   = "jwick"
+    uname    = "jwick"
     passwd   = "1234"
     email    = "j@yahoo.com"
-    userid   = 4
-
+    #userid   = 4
 
 
     ins_query = """INSERT INTO USERS (FirstName, LastName, UserName, PassWord,Email)VALUES('%s', '%s', '%s', '%s', '%s') """ %(fname, lname, uname, passwd, email)

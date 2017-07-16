@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Welcome To ContactsApp</title>
-  </head>
-  <body bgcolor=green>
-    <h1> Welcome to Contacts App </h1>
-  </body>
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("static/bulb.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+</head>
+<body class = "bg">
+
+<h3> Welcome to the contacts Store </h3>
+<div>
+    <a href={{ login }}> <font face="Verdana" size="2"> Login </font></a>
+</div>
+
+<div>
+    <a href={{ create }}> <font face ="Verdana"  size="2"> Create an Account </font></a>
+</div>
+
+</body>
 </html>
